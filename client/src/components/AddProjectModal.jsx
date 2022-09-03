@@ -1,17 +1,17 @@
-import React, { useState } from "react";
-import { FaList } from "react-icons/fa";
-import { useMutation, useQuery } from "@apollo/client";
-import { GET_PROJECTS } from "../queries/projectQueries"; // imported to update project
-import { GET_CLIENTS } from "../queries/clientQueries";
-import { ADD_PROJECT } from "../mutations/projectMutatons";
+import React, { useState } from 'react';
+import { FaList } from 'react-icons/fa';
+import { useMutation, useQuery } from '@apollo/client';
+import { GET_PROJECTS } from '../queries/projectQueries'; // imported to update project
+import { GET_CLIENTS } from '../queries/clientQueries';
+import { ADD_PROJECT } from '../mutations/projectMutatons';
 
-const initialState = { name: "", description: "", clientId: "", status: "new" };
+const initialState = { name: '', description: '', clientId: '', status: 'new' };
 
 const AddProjectModal = () => {
-  const [clientData, setClientData] = useState(initialState);
+  const [projectData, setProjectData] = useState(initialState);
 
   const [AddProject] = useMutation(ADD_PROJECT, {
-    variables: clientData,
+    variables: projectData,
     update(cache, { data: { AddProject } }) {
       const { projects } = cache.readQuery({ query: GET_PROJECTS });
 
@@ -28,16 +28,15 @@ const AddProjectModal = () => {
 
     // if (!data.name || !data.name || !data.phone)
     // return alert("Please fill out all fields");
-
-    AddProject(clientData);
-    setClientData(initialState);
+    AddProject(projectData);
+    setProjectData(initialState);
   };
 
   // get clients for select option
   const { loading, error, data } = useQuery(GET_CLIENTS);
 
   if (loading) return null;
-  if (error) return "Something went wrong";
+  if (error) return 'Something went wrong';
 
   return (
     <>
@@ -82,9 +81,12 @@ const AddProjectModal = () => {
                         type="text"
                         className="form-control"
                         id="name"
-                        value={clientData.name}
+                        value={projectData.name}
                         onChange={(e) =>
-                          setClientData({ ...clientData, name: e.target.value })
+                          setProjectData({
+                            ...projectData,
+                            name: e.target.value,
+                          })
                         }
                         required
                       />
@@ -94,10 +96,10 @@ const AddProjectModal = () => {
                       <textarea
                         className="form-control"
                         id="description"
-                        value={clientData.description}
+                        value={projectData.description}
                         onChange={(e) =>
-                          setClientData({
-                            ...clientData,
+                          setProjectData({
+                            ...projectData,
                             description: e.target.value,
                           })
                         }
@@ -109,10 +111,10 @@ const AddProjectModal = () => {
                       <select
                         id="status"
                         className="form-select"
-                        value={clientData.status}
+                        value={projectData.status}
                         onChange={(e) =>
-                          setClientData({
-                            ...clientData,
+                          setProjectData({
+                            ...projectData,
                             status: e.target.value,
                           })
                         }
@@ -128,10 +130,10 @@ const AddProjectModal = () => {
                       <select
                         id="clientId"
                         className="form-select"
-                        value={clientData.clientId}
+                        value={projectData.clientId}
                         onChange={(e) =>
-                          setClientData({
-                            ...clientData,
+                          setProjectData({
+                            ...projectData,
                             clientId: e.target.value,
                           })
                         }
@@ -147,7 +149,7 @@ const AddProjectModal = () => {
 
                     <button
                       type="submit"
-                      data-bs-dismiss={initialState ? "" : "modal"}
+                      data-bs-dismiss={initialState ? '' : 'modal'}
                       className="btn btn-primary"
                     >
                       Submit
