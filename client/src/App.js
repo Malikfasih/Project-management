@@ -5,7 +5,6 @@ import Home from './pages/Home';
 import NotFound from './pages/NotFound';
 import Project from './pages/Project';
 
-// to avoid getting warnings of cache data may lost:
 const cache = new InMemoryCache({
   typePolicies: {
     Query: {
@@ -25,11 +24,9 @@ const cache = new InMemoryCache({
   },
 });
 
-// create client and will put uri of our graphql project
 const client = new ApolloClient({
-  // uri: 'http://localhost:5000/graphql',
   uri: 'https://project-mangmt.herokuapp.com/graphql',
-  cache, // above cache variable
+  cache,
 });
 
 const App = () => {

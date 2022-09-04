@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
 const ProjectSchema = new mongoose.Schema({
   name: {
@@ -9,14 +9,14 @@ const ProjectSchema = new mongoose.Schema({
   },
   status: {
     type: String,
-    enum: ["Not Started", "In Progress", "Completed"],
+    enum: ['Not Started', 'In Progress', 'Completed'],
   },
   clientId: {
-    type: mongoose.Schema.Types.ObjectId, // when we create a new record it will going to assign an Id that is obj Id.
-    ref: "Client", // we pertain/relate ClientId to Client model
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Client',
   },
 });
 
-const Project = mongoose.model("project", ProjectSchema);
+const Project = mongoose.model('project', ProjectSchema);
 
 export default Project;

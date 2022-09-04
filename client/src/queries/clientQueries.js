@@ -1,4 +1,4 @@
-import { gql } from "@apollo/client"; // gql is used to make query
+import { gql } from '@apollo/client';
 
 export const GET_CLIENTS = gql`
   query getClients {

@@ -1,10 +1,10 @@
-import { Link, useParams } from "react-router-dom"; // useParams to get the id from the url
-import { GET_PROJECT } from "../queries/projectQueries";
-import { useQuery } from "@apollo/client";
-import Spinner from "../components/Spinner";
-import ClientInfo from "../components/ClientInfo";
-import DeleteProjectButton from "../components/DeleteProjectButton";
-import EditProjectForm from "../components/EditProjectForm";
+import { Link, useParams } from 'react-router-dom';
+import { GET_PROJECT } from '../queries/projectQueries';
+import { useQuery } from '@apollo/client';
+import Spinner from '../components/Spinner';
+import ClientInfo from '../components/ClientInfo';
+import DeleteProjectButton from '../components/DeleteProjectButton';
+import EditProjectForm from '../components/EditProjectForm';
 
 const Project = () => {
   const { id } = useParams();

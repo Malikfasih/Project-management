@@ -1,4 +1,4 @@
-import { gql } from "@apollo/client";
+import { gql } from '@apollo/client';
 
 export const GET_PROJECTS = gql`
   query getProjects {
@@ -10,7 +10,6 @@ export const GET_PROJECTS = gql`
   }
 `;
 
-// to get single project
 export const GET_PROJECT = gql`
   query getProject($id: ID!) {
     project(id: $id) {

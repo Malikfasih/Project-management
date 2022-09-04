@@ -1,4 +1,4 @@
-import { gql } from "@apollo/client";
+import { gql } from '@apollo/client';
 
 export const ADD_PROJECT = gql`
   mutation AddProject(
@@ -25,7 +25,7 @@ export const ADD_PROJECT = gql`
       }
     }
   }
-`; // $status: ProjectStatus! => ProjectStatus is refering to the name of 'enum' in AddProject backend
+`;
 
 export const DELETE_PROJECT = gql`
   mutation deleteProject($id: ID!) {
