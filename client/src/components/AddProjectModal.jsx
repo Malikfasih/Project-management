@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { FaList } from 'react-icons/fa';
 import { useMutation, useQuery } from '@apollo/client';
-import { GET_PROJECTS } from '../queries/projectQueries'; // imported to update project
+import { GET_PROJECTS } from '../queries/projectQueries';
 import { GET_CLIENTS } from '../queries/clientQueries';
 import { ADD_PROJECT } from '../mutations/projectMutatons';
 
@@ -17,7 +17,6 @@ const AddProjectModal = () => {
 
       cache.writeQuery({
         query: GET_PROJECTS,
-        //   data: {projects: projects.concat([addProject])}, can also do this way
         data: { projects: [...projects, AddProject] },
       });
     },
@@ -25,14 +24,10 @@ const AddProjectModal = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    // if (!data.name || !data.name || !data.phone)
-    // return alert("Please fill out all fields");
     AddProject(projectData);
     setProjectData(initialState);
   };
 
-  // get clients for select option
   const { loading, error, data } = useQuery(GET_CLIENTS);
 
   if (loading) return null;

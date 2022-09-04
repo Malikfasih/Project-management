@@ -4,7 +4,7 @@ import { useQuery } from '@apollo/client';
 import Spinner from './Spinner';
 
 function Clients() {
-  const { loading, error, data } = useQuery(GET_CLIENTS); // we destructured 3 things from "GET_CLIENTS" query
+  const { loading, error, data } = useQuery(GET_CLIENTS);
   if (loading) return <Spinner />;
   if (error) return <p>Something went wrong</p>;
 

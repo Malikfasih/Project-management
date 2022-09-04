@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom'; // to redirect back to home page after del
+import { useNavigate } from 'react-router-dom';
 import { GET_PROJECTS } from '../queries/projectQueries';
 import { useMutation } from '@apollo/client';
 import { DELETE_PROJECT } from '../mutations/projectMutatons';
@@ -11,10 +11,6 @@ const DeleteProjectButton = ({ projectId }) => {
     variables: { id: projectId },
     onCompleted: navigate('/'),
     refetchQueries: [{ query: GET_PROJECTS }],
-
-    // update(cache, { data: {deleteProject}}){
-    // const {projects} = cache.readQuery({ query: GET_PROJECTS}),
-    // }
   });
   return (
     <div className="d-flex mt-5 ms-auto">

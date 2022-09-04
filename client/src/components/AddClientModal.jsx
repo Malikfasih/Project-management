@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import { FaUser } from "react-icons/fa";
-import { useMutation } from "@apollo/client";
-import { ADD_CLIENT } from "../mutations/clientMutations";
-import { GET_CLIENTS } from "../queries/clientQueries"; // imported to update client
+import React, { useState } from 'react';
+import { FaUser } from 'react-icons/fa';
+import { useMutation } from '@apollo/client';
+import { ADD_CLIENT } from '../mutations/clientMutations';
+import { GET_CLIENTS } from '../queries/clientQueries';
 
-const initialState = { name: "", email: "", phone: "" };
+const initialState = { name: '', email: '', phone: '' };
 
 const AddClientModal = () => {
   const [data, setData] = useState(initialState);
@@ -22,9 +22,6 @@ const AddClientModal = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    // if (!data.name || !data.name || !data.phone)
-    // return alert("Please fill out all fields");
 
     addClient(data);
     setData(initialState);
@@ -105,7 +102,7 @@ const AddClientModal = () => {
 
                 <button
                   type="submit"
-                  data-bs-dismiss={initialState ? "" : "modal"}
+                  data-bs-dismiss={initialState ? '' : 'modal'}
                   className="btn btn-secondary"
                 >
                   Submit

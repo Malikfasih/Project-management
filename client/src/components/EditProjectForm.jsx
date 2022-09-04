@@ -1,27 +1,18 @@
-import React, { useState } from "react";
-import { useMutation } from "@apollo/client";
-import { GET_PROJECTS } from "../queries/projectQueries";
-import { UPDATE_PROJECT } from "../mutations/projectMutatons";
+import React, { useState } from 'react';
+import { useMutation } from '@apollo/client';
+import { GET_PROJECTS } from '../queries/projectQueries';
+import { UPDATE_PROJECT } from '../mutations/projectMutatons';
 
 const EditProjectForm = ({ project }) => {
   const [clientData, setClientData] = useState({
     name: project.name,
     description: project.description,
-    status: "",
-  }); // we will not do 'project.status' coz it's an key value of enum
+    status: '',
+  });
 
   const [updateProject] = useMutation(UPDATE_PROJECT, {
     variables: { id: project.id, ...clientData },
     refetchQueries: [{ query: GET_PROJECTS, variables: { id: project.id } }],
-    // update(cache, { data: { project } }) {
-    //   const { projects } = cache.readQuery({ query: GET_PROJECTS });
-
-    //   cache.writeQuery({
-    //     query: GET_PROJECTS,
-    //     //   data: {projects: projects.concat([addProject])}, can also do this way
-    //     data: { projects: [...projects, project] },
-    //   });
-    // },
   });
 
   const handleSubmit = (e) => {
